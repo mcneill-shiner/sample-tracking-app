@@ -16,3 +16,5 @@ const ProjectList = {{projects, openProject}} => {
         </div>
     )
 }
+
+export default ProjectList;
