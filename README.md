@@ -22,3 +22,14 @@ Initial functionality will include the ability to create a project, invite colla
 
 - Update auth to Passport.js
 - Set project keys to db IDs
+- Define localhost port as a variable
+- Truncate comment list, click to view more
+- Build out schema for samples
+- Set up access for teams & roles
+- Ability to take & upload images directly or via file uploader
+- Ability to star images/docs
+
+### Questions/Unknowns
+
+- Wouldn't appending a new comment (and then reversing the comment array for display) be very heavy in terms of time complexity?
+- in AppContent.js line 31, should that parameter be previousComments or prevComments?
