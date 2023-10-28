@@ -42,9 +42,74 @@ function AppContent() {
         };
     }, [isAuthenticated]);
 
+    const handleLogin = (token, username) => {
+        localStorage.setItem('token', token);
+        setToken(token);
+        localStorage.setItem('username', username);
+        setUsername(username);
+        setIsAuthenticated(true);
+    };
 
+    const handleSignup = (token, username) => {
+        localStorage.setItem('token', token);
+        setToken(token);
+        localStorage.setItem('username', username);
+        setUsername(username);
+        setIsAuthenticated(true);        
+    };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setIsAuthenticated(false);
+        setToken(null);
+        setUsername(null);
+        socket.disconnect();
+    };
+
+    const openProject = (project) => {
+        setCurrentProject(project);
+        socket.emit('openProject', {project});
+    };
+
+    const addComment = (comment) => {
+        if(token) {
+            const decodedToken = jwtDecode(token);
+
+            const userId = decodedToken.userId;
+
+            socket.emit('addComment', {project: currentProject, comment, userId});
+        };
+    };
+
+    return (
+        <div className="App">
+            {isAuthenticated ? (
+                <>
+                    <span>Welcome, {username}</span>
+                    <button onClick={handleLogout}>Logout</button>
+                    <ProjectList projects={projectList} openProject={openProject} />
+                    {currentProject && (
+                        <>
+                            <h1>Current Project: {currentProject}</h1>
+                            <CommentList comments={comments} />
+                            <CommentInput addComment={addComment} />
+                        </>
+                    )} 
+                </>
+            ) : (
+                <>
+                    <h1>Login</h1>
+                    <LoginForm onLogin={handleLogin} />
+                    <h1>Signup</h1>
+                    <SignupForm onSignup={handleSignup} />
+                </>
+            )}
+        </div>
+    );
 
 };
+
+export default AppContent;
 
 
