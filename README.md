@@ -28,8 +28,10 @@ Initial functionality will include the ability to create a project, invite colla
 - Set up access for teams & roles
 - Ability to take & upload images directly or via file uploader
 - Ability to star images/docs
+- Home feed w/ digest of new info, organized by project
 
 ### Questions/Unknowns
 
 - Wouldn't appending a new comment (and then reversing the comment array for display) be very heavy in terms of time complexity?
 - in AppContent.js line 31, should that parameter be previousComments or prevComments?
+- Look into encryption options
