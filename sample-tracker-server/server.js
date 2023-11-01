@@ -39,4 +39,5 @@ io.on('connection', (socket) => {
             .sort({timestamp: -1})
             .limit(15)
             .populate('user', 'username')
-})
+    })
+});
