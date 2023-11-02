@@ -32,6 +32,7 @@ mongoose.connect(mongoURI).then(() => {
 
 io.on('connection', (socket) => {
     console.log('New client connected');
+
     socket.on('openProject', async ({project}) => {
         socket.join(project);
 
@@ -39,5 +40,60 @@ io.on('connection', (socket) => {
             .sort({timestamp: -1})
             .limit(15)
             .populate('user', 'username')
+
+        socket.emit('previousComments', comments);
+    });
+
+    socket.on('setComment', async ({project, comment, userId}) => {
+        const user = await User.findById(userId);
+
+        if(!user) {
+            return;
+        };
+
+        const newComment = new Comment({
+            project,
+            content: comment,
+            user: userId,
+        });
+
+        await newComment.save();
+        await newComment.populate('user', 'username');
+
+        io.to(project).emit('newComment', newComment);
     })
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected');
+    })
+
+});
+
+app.post('/register', async (req, res) => {
+    const {username, email, password} = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({username, email, password: hashedPassword});
+    await user.save();
+    const token = jwt.sign({userId: user._id}, process.env.SECRET_KEY);
+    res.send({token, username});
+});
+
+app.post('/login', async (req, res) => {
+    const {username, password} = req.body;
+    const user = await User.findOne({username});
+    if (!user) {
+        return res.status(404).send('User not found');
+    };
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+        return res.status(400).send('Invalid password');
+    };
+
+    const token = jwt.sign({userId: user._id}, process.env.SECRET_KEY);
+
+});
+
+server.listen(8000, () => {
+    console.log('Server running on http://localhost:8000');
 });
