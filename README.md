@@ -31,6 +31,7 @@ Initial functionality will include the ability to create a project, invite colla
 - Build out schema for samples
 - Refactor db connection to async/await
 - Change from hard limit on comment display to something else--truncated, etc.
+- Add check for dup username to registration route
 
 ### Questions/Unknowns
 
@@ -40,3 +41,4 @@ Initial functionality will include the ability to create a project, invite colla
 - React has .env built-in. Necessary to install for server side?
 - is .join a socket.io method?
 - Use typescript? Or jsDOC?
+- Scaling server connections--AWS API Gateway, or something similar?
