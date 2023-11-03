@@ -21,6 +21,7 @@ Initial functionality will include the ability to create a project, invite colla
 - Ability to take & upload images directly or via file uploader
 - Ability to star images/doc
 - Set up access for teams & roles
+- Edit & resolve functionality for comments
 
 ### Next Steps
 
