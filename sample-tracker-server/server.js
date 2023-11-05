@@ -44,10 +44,12 @@ io.on('connection', (socket) => {
         socket.emit('previousComments', comments);
     });
 
-    socket.on('setComment', async ({project, comment, userId}) => {
+    socket.on('addComment', async ({project, comment, userId}) => {
+        console.log('comment received')
         const user = await User.findById(userId);
 
         if(!user) {
+            console.log('User not found');
             return;
         };
 
