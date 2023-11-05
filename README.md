@@ -43,3 +43,7 @@ Initial functionality will include the ability to create a project, invite colla
 - is .join a socket.io method?
 - Use typescript? Or jsDOC?
 - Scaling server connections--AWS API Gateway, or something similar?
+
+### Absolute next step
+
+- addComment isn't working. Looks like it is being emitted from AppContent (line 81), but not received by server.js (line 47).
