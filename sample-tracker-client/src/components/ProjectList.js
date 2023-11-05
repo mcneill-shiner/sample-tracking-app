@@ -7,9 +7,9 @@ const ProjectList = ({projects, openProject}) => {
                 Projects
             </h2>
             <ul>
-                {rooms.map((room, index) => (
+                {projects.map((project, index) => (
                     <li key={index}>
-                        <button onClick={() => openProject(project)}>Open {room}</button>
+                        <button onClick={() => openProject(project)}>Open {project}</button>
                     </li>
                 ))}
             </ul>

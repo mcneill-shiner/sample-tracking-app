@@ -29,7 +29,7 @@ function AppContent() {
             });
 
             socket.on('previousComments', (prevComments) => {
-                setMessages(prevComments);
+                setComments(prevComments);
             })
         } else {
             socket.disconnect();
@@ -88,7 +88,7 @@ function AppContent() {
                 <>
                     <span>Welcome, {username}</span>
                     <button onClick={handleLogout}>Logout</button>
-                    <ProjectList projects={projectList} openProject={openProject} />
+                    <ProjectList projects={projects} openProject={openProject} />
                     {currentProject && (
                         <>
                             <h1>Current Project: {currentProject}</h1>
