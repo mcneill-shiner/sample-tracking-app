@@ -19,8 +19,8 @@ const io = socketIO(server, {
     },
 });
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 const mongoURI = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.eilpw.mongodb.net/sample_tracker?retryWrites=true&w=majority`;
 
@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
         socket.emit('previousComments', comments);
     });
 
-    socket.on('addComment', async ({project, comment, userId}) => {
+    socket.on('addComment', async ({ project, comment, userId }) => {
         console.log('comment received')
         const user = await User.findById(userId);
 

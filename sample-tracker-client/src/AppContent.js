@@ -25,7 +25,7 @@ function AppContent() {
             });
 
             socket.on('newComment', (comment) => {
-                setComments((prevComments) => [comment, ...prevComments])
+                setComments((prevComments) => [...prevComments, comment])
             });
 
             socket.on('previousComments', (prevComments) => {
@@ -79,7 +79,7 @@ function AppContent() {
             const userId = decodedToken.userId;
 
             socket.emit('addComment', {project: currentProject, comment, userId});
-            console.log('message emitted')
+            console.log(`Message emitted: ${currentProject}, ${comment}, ${userId}`)
         };
     };
 
