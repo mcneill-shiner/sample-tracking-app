@@ -24,6 +24,11 @@ app.use(cors());
 
 const mongoURI = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.eilpw.mongodb.net/sample_tracker?retryWrites=true&w=majority`;
 
+const handleError = (err) => {
+    console.log('Error');
+    console.log(err);
+};
+
 mongoose.connect(mongoURI).then(() => {
     console.log('Connected to MongoDB database');
 }).catch((error) => {
@@ -46,7 +51,7 @@ io.on('connection', (socket) => {
 
     socket.on('addComment', async ({ project, comment, userId }) => {
         console.log('comment received')
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).catch(handleError);
 
         if(!user) {
             console.log('User not found');

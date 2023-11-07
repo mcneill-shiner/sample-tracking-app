@@ -78,8 +78,8 @@ function AppContent() {
 
             const userId = decodedToken.userId;
 
-            socket.emit('addComment', {project: currentProject, comment, userId});
-            console.log(`Message emitted: ${currentProject}, ${comment}, ${userId}`)
+            socket.emit('addComment', { project: currentProject, comment, userId });
+            console.log(`comment emitted: ${currentProject}, ${comment}, ${userId}`)
         };
     };
 
