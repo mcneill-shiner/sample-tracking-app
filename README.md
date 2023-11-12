@@ -46,4 +46,4 @@ Initial functionality will include the ability to create a project, invite colla
 
 ### Absolute next step
 
-- addComment isn't working. Looks like it is being emitted from AppContent (line 81), but not received by server.js (line 47).
+- When initially added (w/ AddComment), comment appears at the top of the list. Then upon re-entering room, it displays in the correct order.
