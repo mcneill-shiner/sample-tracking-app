@@ -68,7 +68,7 @@ io.on('connection', (socket) => {
         await newComment.populate('user', 'username');
 
         io.to(project).emit('newComment', newComment);
-    })
+    });
 
     socket.on('disconnect', () => {
         console.log('Client disconnected');
@@ -86,8 +86,8 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const {username, password} = req.body;
-    const user = await User.findOne({username});
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
     if (!user) {
         return res.status(404).send('User not found');
     };
@@ -97,7 +97,8 @@ app.post('/login', async (req, res) => {
         return res.status(400).send('Invalid password');
     };
 
-    const token = jwt.sign({userId: user._id}, process.env.SECRET_KEY);
+    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
+    res.send({ token, username });
 
 });
 

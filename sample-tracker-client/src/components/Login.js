@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 
-const LoginForm = ({onLogin}) => {
+const LoginForm = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(`Submit received, user ${username}`);
 
         const response = await fetch('http://localhost:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username, password}),
-        });
+            body: JSON.stringify({ username, password }),
+        }).catch(err => {
+            console.log(err)
+        })
+        console.log('login request submitted')
 
         const data = await response.json();
         
