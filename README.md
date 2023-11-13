@@ -43,7 +43,8 @@ Initial functionality will include the ability to create a project, invite colla
 - is .join a socket.io method?
 - Use typescript? Or jsDOC?
 - Scaling server connections--AWS API Gateway, or something similar?
+- Do we need to limit display of comments after new comments are added? Limit is 15 upon loading (openProject), but no limit added afterwards.
+- Fixed issue with newly added comments going to the top. But why does changing the sort on openProject not seem to do anything?
 
 ### Absolute next step
 
-- When initially added (w/ AddComment), comment appears at the top of the list. Then upon re-entering room, it displays in the correct order.

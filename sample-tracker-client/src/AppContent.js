@@ -25,7 +25,7 @@ function AppContent() {
             });
 
             socket.on('newComment', (comment) => {
-                setComments((prevComments) => [...prevComments, comment])
+                setComments((prevComments) => [comment, ...prevComments])
             });
 
             socket.on('previousComments', (prevComments) => {
