@@ -28,7 +28,6 @@ Initial functionality will include the ability to create a project, invite colla
 - Update auth to Passport.js
 - Set project keys to db IDs
 - Define localhost port as a variable
-- Truncate comment list, click to view more
 - Build out schema for samples
 - Refactor db connection to async/await
 - Change from hard limit on comment display to something else--truncated, etc.
@@ -48,3 +47,5 @@ Initial functionality will include the ability to create a project, invite colla
 
 ### Absolute next step
 
+- Updating auth to Passport.js
+- Include checking username for dup
