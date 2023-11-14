@@ -16,7 +16,7 @@ Initial functionality will include the ability to create a project, invite colla
 
 - Ability to define teams, and roles within teams
 - Ability to tag users in a comment
-- Ability to resolve comments 
+- Ability to resolve comments
 - Home feed w/ digest of new info, organized by project
 - Ability to take & upload images directly or via file uploader
 - Ability to star images/doc
@@ -49,6 +49,7 @@ Initial functionality will include the ability to create a project, invite colla
 
 ### Absolute next step
 
+- Install react-hook-form, plus something else for validation?
 - Updating auth to Passport.js
 - Include checking username for dup
 - Set up routes for individual projects?
