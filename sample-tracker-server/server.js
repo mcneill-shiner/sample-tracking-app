@@ -7,11 +7,16 @@ const mongoose = require('mongoose');
 const Project = require('./models/Project');
 const Comment = require('./models/Comment');
 const jwt = require('jsonwebtoken');
+// oauth import passport
 const User = require('./models/User');
 const bcrypt = require('bcrypt');
 
 const app = express();
 const server = http.createServer(app);
+
+// oauth passport config
+// oauth set up sessions?
+// oauth middleware
 
 const io = socketIO(server, {
     cors: {

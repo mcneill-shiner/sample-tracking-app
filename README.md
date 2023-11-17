@@ -44,8 +44,11 @@ Initial functionality will include the ability to create a project, invite colla
 - Scaling server connections--AWS API Gateway, or something similar?
 - Do we need to limit display of comments after new comments are added? Limit is 15 upon loading (openProject), but no limit added afterwards.
 - Fixed issue with newly added comments going to the top. But why does changing the sort on openProject not seem to do anything?
+- How to set up signup when really, every profile should be part of a team of some sort? How to add a team after a user has already signed up?
+- When refactoring to use OAuth/Passport...will checking if user still be valid? Seems like it would.
 
 ### Absolute next step
 
 - Updating auth to Passport.js
 - Include checking username for dup
+- Set up routes for individual projects?
